@@ -77,23 +77,27 @@ export default {
             transformOrigin: "50% 50%",
             ease: "slow(0.7, 0.7, false)",
           },
+          paused: true,
         });
         tlSvgAnim
           .to(".srednja", { opacity: 0, duration: 0.2 })
           .to(".prva", { rotation: 45, duration: 0.25, y: 10 }, "<.1")
           .to(".treca", { rotation: -45, duration: 0.25, y: -10 }, "<");
-        tlSvgAnim.pause();
       } else {
         return;
       }
     }
     function animationSvgMenu() {
-      if (!isOpen.value) {
-        tlSvgAnim.play();
-        isOpen.value = true;
-      } else if (isOpen.value) {
-        tlSvgAnim.reverse();
-        isOpen.value = false;
+      if (tlSvgAnim.isActive()) {
+        return;
+      } else {
+        if (!isOpen.value) {
+          tlSvgAnim.play();
+          isOpen.value = true;
+        } else if (isOpen.value) {
+          tlSvgAnim.reverse();
+          isOpen.value = false;
+        }
       }
     }
     function initAnimationItems(el) {
@@ -114,7 +118,7 @@ export default {
         xPercent: "-100",
         duration: 0.25,
         delay: 0.15,
-        ease: "power2.in",
+        ease: "circ.in",
         onComplete: done,
       });
     }
