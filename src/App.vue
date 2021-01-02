@@ -27,7 +27,7 @@ export default {
     function beginAnimation(el, done) {
       gsap.to(el, {
         opacity: 1,
-        duration: 0.2,
+        duration: 0.25,
         ease: "power2.out",
         onComplete: done,
       });
@@ -35,7 +35,7 @@ export default {
     function finishAnimation(el, done) {
       gsap.to(el, {
         opacity: 0,
-        duration: 0.2,
+        duration: 0.25,
         ease: "power2.in",
         onComplete: done,
       });

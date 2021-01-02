@@ -315,9 +315,13 @@ export default {
     onMounted(function initGsap() {
       gsap.fromTo(
         "#slika0",
-        { xPercent: 100 },
         {
-          xPercent: 0,
+          x: function getWidh() {
+            return document.querySelector("#slika0").offsetWidth * 2 || 0;
+          },
+        },
+        {
+          x: 0,
           duration: 0.4,
           ease: "circ.out",
           scrollTrigger: {
@@ -326,7 +330,7 @@ export default {
               return `top bottom`;
             },
             end: function getEnd() {
-              var offset = document.querySelector("#slika0").offsetWidth;
+              var offset = document.querySelector("#slika0").offsetWidth || 0;
               return `+=${offset / 2} bottom`;
             },
             scrub: 1,
@@ -335,9 +339,13 @@ export default {
       );
       gsap.fromTo(
         "#slika1",
-        { xPercent: -100 },
         {
-          xPercent: 0,
+          x: function getWidh() {
+            return document.querySelector("#slika1").offsetWidth * 2 || 0;
+          },
+        },
+        {
+          x: 0,
           duration: 0.4,
           ease: "circ.out",
           scrollTrigger: {
@@ -346,7 +354,7 @@ export default {
               return `top bottom`;
             },
             end: function getEnd() {
-              var offset = document.querySelector("#slika1").offsetWidth;
+              var offset = document.querySelector("#slika1").offsetWidth || 0;
               return `+=${offset / 2} bottom`;
             },
             scrub: 1,
@@ -355,9 +363,13 @@ export default {
       );
       gsap.fromTo(
         "#slika2",
-        { xPercent: 100 },
         {
-          xPercent: 0,
+          x: function getWidh() {
+            return document.querySelector("#slika2").offsetWidth * 2 || 0;
+          },
+        },
+        {
+          x: 0,
           duration: 0.4,
           ease: "circ.out",
           scrollTrigger: {
@@ -366,7 +378,7 @@ export default {
               return `top bottom`;
             },
             end: function getEnd() {
-              var offset = document.querySelector("#slika2").offsetWidth;
+              var offset = document.querySelector("#slika2").offsetWidth || 0;
               return `+=${offset / 2} bottom`;
             },
             scrub: 1,
@@ -375,9 +387,13 @@ export default {
       );
       gsap.fromTo(
         "#slika3",
-        { xPercent: -100 },
         {
-          xPercent: 0,
+          x: function getWidh() {
+            return document.querySelector("#slika3").offsetWidth * 2 || 0;
+          },
+        },
+        {
+          x: 0,
           duration: 0.4,
           ease: "circ.out",
           scrollTrigger: {
@@ -386,7 +402,7 @@ export default {
               return `top bottom`;
             },
             end: function getEnd() {
-              var offset = document.querySelector("#slika3").offsetWidth;
+              var offset = document.querySelector("#slika3").offsetWidth || 0;
               return `+=${offset / 2} bottom`;
             },
             scrub: 1,
