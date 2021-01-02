@@ -306,13 +306,21 @@ import AsideOurService from "../components/AsideOurService.vue";
 import AsideWithImage from "../components/AsideWithImage.vue";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted } from "vue";
+import { onMounted, onUnmounted } from "vue";
 export default {
   name: "Home",
   components: { TheFormsEmail, AsideOurService, AsideWithImage },
   setup() {
-    gsap.registerPlugin(ScrollTrigger);
+    onUnmounted(function() {
+      ScrollTrigger.getAll().forEach(t => t.disable());
+    });
     onMounted(function initGsap() {
+      if (ScrollTrigger.getAll().length > 0) {
+        ScrollTrigger.getAll().forEach(t => {
+          t.enable();
+        });
+      }
+      gsap.registerPlugin(ScrollTrigger);
       gsap.fromTo(
         "#slika0",
         {

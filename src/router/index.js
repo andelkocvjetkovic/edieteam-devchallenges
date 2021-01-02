@@ -14,7 +14,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Services.vue"),
+      import(/* webpackChunkName: "Services" */ "../views/Services.vue"),
   },
   {
     path: "/ourworks",
@@ -23,7 +23,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/OurWorks.vue"),
+      import(/* webpackChunkName: "OurWorks" */ "../views/OurWorks.vue"),
   },
   {
     path: "/clients",
@@ -32,7 +32,7 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Clients.vue"),
+      import(/* webpackChunkName: "Clients" */ "../views/Clients.vue"),
   },
   {
     path: "/contact",
@@ -41,13 +41,13 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/Contact.vue"),
+      import(/* webpackChunkName: "Contact" */ "../views/Contact.vue"),
   },
   {
     path: "/:pathMatch(.*)*",
     name: "NotFound",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/NotFound.vue"),
+      import(/* webpackChunkName: "NotFound" */ "../views/NotFound.vue"),
   },
 ];
 
