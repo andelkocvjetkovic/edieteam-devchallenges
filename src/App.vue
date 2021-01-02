@@ -1,30 +1,62 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view />
+  <the-nav></the-nav>
+  <router-view v-slot="{ Component }">
+    <transition
+      :css="false"
+      mode="out-in"
+      @before-enter="initAnimation"
+      @enter="beginAnimation"
+      @leave="finishAnimation"
+    >
+      <component :is="Component" />
+    </transition>
+  </router-view>
+  <the-footer></the-footer>
 </template>
+
+<script>
+import gsap from "gsap";
+import TheFooter from "./components/TheFooter.vue";
+import TheNav from "./components/TheNav.vue";
+export default {
+  components: { TheNav, TheFooter },
+  setup() {
+    function initAnimation(el) {
+      gsap.set(el, { opacity: 0 });
+    }
+    function beginAnimation(el, done) {
+      gsap.to(el, {
+        opacity: 1,
+        duration: 0.2,
+        ease: "power2.out",
+        onComplete: done,
+      });
+    }
+    function finishAnimation(el, done) {
+      gsap.to(el, {
+        opacity: 0,
+        duration: 0.2,
+        ease: "power2.in",
+        onComplete: done,
+      });
+    }
+
+    return { initAnimation, beginAnimation, finishAnimation };
+  },
+};
+TheFooter;
+</script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  @apply min-h-screen;
+  @apply bg-gray-50;
+  @apply overflow-x-hidden;
+  scroll-behavior: smooth;
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+body {
+  @apply w-full;
 }
 </style>
