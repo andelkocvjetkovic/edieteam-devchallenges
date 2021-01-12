@@ -56,7 +56,7 @@ export default {
     var wSBiger1024 = ref(undefined);
     watch(isOpenNav, function(newValue) {
       if (newValue == true) {
-        //prevent scroll on showd modal
+        //prevent scroll on show modal
         document.body.style.position = "fixed";
         document.body.style.top = `${window.scrollY}`;
       } else {
@@ -98,7 +98,6 @@ export default {
         return;
       }
       if (!isOpenNav.value) {
-        console.log(tlSvgAnim);
         tlSvgAnim.play();
         isOpenNav.value = true;
       } else if (isOpenNav.value) {
