@@ -301,26 +301,19 @@
 </template>
 
 <script>
-import TheFormsEmail from "../components/TheFormsEmail.vue";
+import { gsap, ScrollTrigger } from "../Features/my-gsap.js";
+import { onMounted, onUnmounted } from "vue";
 import AsideOurService from "../components/AsideOurService.vue";
 import AsideWithImage from "../components/AsideWithImage.vue";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { onMounted, onUnmounted } from "vue";
+import TheFormsEmail from "../components/TheFormsEmail.vue";
 export default {
   name: "Home",
   components: { TheFormsEmail, AsideOurService, AsideWithImage },
   setup() {
     onUnmounted(function() {
-      ScrollTrigger.getAll().forEach(t => t.disable());
+      ScrollTrigger.getAll().forEach(t => t.kill());
     });
     onMounted(function initGsap() {
-      if (ScrollTrigger.getAll().length > 0) {
-        ScrollTrigger.getAll().forEach(t => {
-          t.enable();
-        });
-      }
-      gsap.registerPlugin(ScrollTrigger);
       gsap.fromTo(
         "#slika0",
         {
